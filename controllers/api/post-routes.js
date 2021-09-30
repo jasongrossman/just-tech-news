@@ -90,23 +90,9 @@ router.post('/', withAuth, (req, res) => {
     });
 });
 
-<<<<<<< HEAD
-router.put('/upvote', (req, res) => {
-<<<<<<< HEAD:routes/api/post-routes.js
-  // custom static method created in models/Post.js
-  Post.upvote(req.body, { Vote, Comment, User })
-=======
-  //make sure the session exists first
-  if (req.session) {
-
-// pass session id along with all destructured properties on req.body  
-    Post.upvote({ ...req.body, user_id: req.session.user_id }, { Vote, Comment, User })
->>>>>>> develop:controllers/api/post-routes.js
-=======
 router.put('/upvote', withAuth, (req, res) => {
   // custom static method created in models/Post.js
   Post.upvote({ ...req.body, user_id: req.session.user_id }, { Vote, Comment, User })
->>>>>>> develop
     .then(updatedVoteData => res.json(updatedVoteData))
     .catch(err => {
       console.log(err);
